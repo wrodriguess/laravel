@@ -31,4 +31,24 @@ class PostController extends Controller
         // $posts->author = 'Alessandro';
         // $posts->save();
     }
+
+    public function readAll(Request $request)
+    {
+        $post = new Post();
+
+        // Pega todos os posts e joga na variavel $posts
+        $posts = $post->all();
+
+        return $posts;
+    }
+
+    public function findById(Request $request)
+    {
+        $post = new Post();
+
+        // Find procura pela chave primaria
+        $post = $post->find($request->id);
+
+        return $post;
+    }
 }
