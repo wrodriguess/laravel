@@ -69,4 +69,17 @@ class PostController extends Controller
 
         return $post;
     }
+
+    public function delete(Request $request)
+    {
+        $post = new Post();
+
+        // Econtrando o registro
+        $post = $post->find($request->id);
+
+        // Excluindo o registro
+        $post->delete();
+
+        return $post;
+    }
 }
