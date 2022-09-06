@@ -7,3 +7,5 @@ Route::get('/posts/create', [PostController::class, 'create']);
 
 Route::get('/posts/read', [PostController::class, 'readAll']);
 Route::get('/posts/read/{id}', [PostController::class, 'findById']);
+
+Route::get('/posts/update/{id}', [PostController::class, 'update']);

@@ -51,4 +51,22 @@ class PostController extends Controller
 
         return $post;
     }
+
+    public function update(Request $request)
+    {
+        $post = new Post();
+
+        // Encontrando o post que irei alterar
+        $post = $post->find($request->id);
+
+        // Modificando os atributos do objeto
+        $post->title = "Meu post atualizado";
+        $post->content = "Conteudo atualizado";
+        $post->author = "Eu mesmo";
+
+        // Salvando no banco de dados
+        $post->save();
+
+        return $post;
+    }
 }
