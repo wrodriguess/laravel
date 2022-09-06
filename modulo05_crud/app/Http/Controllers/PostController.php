@@ -7,7 +7,27 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function create(Request $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $post = new Post();
+
+        // Pega todos os posts e joga na variavel $posts
+        $posts = $post->all();
+
+        return $posts;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         // Definindo os valores do meu insert
         $newPost = [
@@ -23,63 +43,61 @@ class PostController extends Controller
         $posts->save();
 
         return 'Post adicionado';
-
-        // OU
-        // $posts = new Post();
-        // $posts->title = 'Meu primeiro post';
-        // $posts->content = 'Conteúdo Qualquer';
-        // $posts->author = 'Alessandro';
-        // $posts->save();
     }
 
-    public function readAll(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $post = new Post();
-
-        // Pega todos os posts e joga na variavel $posts
-        $posts = $post->all();
-
-        return $posts;
+        //
     }
 
-    public function findById(Request $request)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        $post = new Post();
-
-        // Find procura pela chave primaria
-        $post = $post->find($request->id);
-
-        return $post;
+        //
     }
 
-    public function update(Request $request)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        $post = new Post();
-
-        // Encontrando o post que irei alterar
-        $post = $post->find($request->id);
-
-        // Modificando os atributos do objeto
-        $post->title = "Meu post atualizado";
-        $post->content = "Conteudo atualizado";
-        $post->author = "Eu mesmo";
-
-        // Salvando no banco de dados
-        $post->save();
-
-        return $post;
+        //
     }
 
-    public function delete(Request $request)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        $post = new Post();
+        //
+    }
 
-        // Econtrando o registro
-        $post = $post->find($request->id);
-
-        // Excluindo o registro
-        $post->delete();
-
-        return $post;
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
